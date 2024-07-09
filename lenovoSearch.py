@@ -8,10 +8,10 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
-import time
 
 def search(serialNumber):
-    service = Service(executable_path = "./chromedriver")
+    #Change to executable path of your driver
+    service = Service(executable_path = "./chromedriver") 
 
     options = webdriver.ChromeOptions()
     options.add_argument('--headless=new')
