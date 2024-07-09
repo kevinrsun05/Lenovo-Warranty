@@ -1,6 +1,6 @@
 **Python 3 script that searches for Lenovo laptop information given the serial number**
 
-1) Ensure you have Selenium Chrome Driver (for google chrome) or Web Driver (any browser) installed.
+1) Ensure you have Selenium Chrome Driver installed.
 
 2) In the script, replace the following 
 ```
