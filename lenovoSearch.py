@@ -24,20 +24,41 @@ def search(serialNumber):
         input_element = driver.find_element(By.CLASS_NAME, "button-placeholder__input")
         input_element.clear()
         input_element.send_keys(serialNumber + Keys.ENTER)
+    except Exception as e:
+        print("Unable to search Serial Number")
 
         # Obtain all info on first page
+    try:
         endDate = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, "//*[@id='app-psp-warranty']/div[2]/div/div/div[1]/div/div[1]/div[2]/div[2]/div/div/div[1]/div/div[2]/div/div[5]/span[2]"))
         ).text
+    except Exception as e:
+        print("Unable to find end date")
+    try:
         onSite = driver.find_element(By.XPATH, "//*[@id='app-psp-warranty']/div[2]/div/div/div[1]/div/div[1]/div[2]/div[2]/div/div/div[1]/div/div[2]/div/div[6]/span[2]").text
+    except Exception as e:
+        print("Unable to find the type (on site?)")
+    try:
         startDate = driver.find_element(By.XPATH, "//*[@id='app-psp-warranty']/div[2]/div/div/div[1]/div/div[1]/div[2]/div[2]/div/div/div[1]/div/div[2]/div/div[2]/span[2]").text
+    except Exception as e:
+        print("Unable to find the start date")
+    try:
         warrantyType = driver.find_element(By.CLASS_NAME, "title-content").text
+    except Exception as e:
+        print("Unable to find the warranty type")
+    try:
         model = driver.find_element(By.CLASS_NAME, "prod-name").text
+    except Exception as e:
+        print("Unable to find the model")
 
         # Click Product Home
+    try:
         productHome = driver.find_element(By.XPATH, "/html/body/div[2]/section[2]/div[1]/div[3]/ul/li[1]/a/span[2]")
         productHome.click();
+    except Exception as e:
+        print("Failed to click Product Home")
 
+    try:
         # Click View to obtain info about device
         viewButton = WebDriverWait(driver, 10).until (
             EC.presence_of_all_elements_located((By.CLASS_NAME, "new-other-info-right"))
@@ -46,36 +67,42 @@ def search(serialNumber):
             if view.text == "View":
                 view.click()
                 break;
+    except Exception as e:
+        print("Failed to click view")
         
+    try:
         configName = WebDriverWait(driver, 10).until(
             EC.presence_of_all_elements_located((By.CLASS_NAME, "desc-config-name"))
         )
+    except Exception as e:
+        print("Unable to find the config name")
+
+    try:
         configDetail = WebDriverWait(driver, 10).until(
             EC.presence_of_all_elements_located((By.CLASS_NAME, "desc-config-detail"))
         )
-
-
-        print()
-        print("====================================================================")
-        print("DEVICE INFO")
-        print("Serial #:", serialNumber.upper())
-        print("Model:", model)
-        print()
-
-        print("WARRANTY INFO")
-        print("Warranty:", warrantyType, "-", onSite)
-        print("Start Date:", startDate)
-        print("End Date:", endDate)
-        print()
-
-        print("SPEC INFO")
-        for name, detail in zip(configName, configDetail):
-            if (name.text != '' or detail.text != ''):
-                print(f"{name.text}: {detail.text}")
-        print("====================================================================")
-        print()
     except Exception as e:
-        print("An error occurred")
+        print("Unable to find the config details")
+
+    print()
+    print("====================================================================")
+    print("DEVICE INFO")
+    print("Serial #:", serialNumber.upper())
+    print("Model:", model)
+    print()
+
+    print("WARRANTY INFO")
+    print("Warranty:", warrantyType, "-", onSite)
+    print("Start Date:", startDate)
+    print("End Date:", endDate)
+    print()
+
+    print("SPEC INFO")
+    for name, detail in zip(configName, configDetail):
+        if (name.text != '' or detail.text != ''):
+            print(f"{name.text}: {detail.text}")
+    print("====================================================================")
+    print()
     driver.quit()
 
 def main():
