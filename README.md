@@ -13,7 +13,10 @@ with the path of where your driver executable is. For Windows, it may be "chrome
 4) Run the script with the laptop serial number as the argument
 
 ***The script gives you information on the following***
-Device Info (serial #, model)
-Warranty Info (Type, Start, End)
-Spec Info (processor, memory, os, etc.)
 
+1) Device Info (serial #, model)
+   
+2) Warranty Info (Type, Start, End)
+   
+3) Spec Info (processor, memory, os, etc.)
+   
