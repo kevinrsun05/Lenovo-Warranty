@@ -14,9 +14,9 @@ with the path of where your driver executable is. For Windows, it may be "chrome
 
 ***The script gives you the following information***
 
-1) Device Info (serial #, model)
+1) Device Info (Serial #, Model)
    
 2) Warranty Info (Type, Start, End)
    
-3) Spec Info (processor, memory, os, etc.)
+3) Spec Info (Processor, Memory, OS, etc.)
    
