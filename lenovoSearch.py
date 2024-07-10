@@ -15,6 +15,7 @@ def search(serialNumber):
 
     options = webdriver.ChromeOptions()
     options.add_argument('--headless=new')
+    options.add_argument('start-maximized')
 
     driver = webdriver.Chrome(service=service, options=options)
     driver.get("https://pcsupport.lenovo.com/us/en/warranty-lookup#/")
