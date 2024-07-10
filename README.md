@@ -6,7 +6,7 @@
 ```
 service = Service(executable_path = "./chromedriver") 
 ```
-with the path of where your driver is installed. For Windows, it may be "chromedriver.exe"
+with the path of where your driver executable is. For Windows, it may be "chromedriver.exe" rather than just "chromedriver"
 
 3) Give the script executable permissions (if not already)
 
